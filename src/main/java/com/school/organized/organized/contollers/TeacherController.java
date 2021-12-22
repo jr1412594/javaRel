@@ -24,12 +24,11 @@ public class TeacherController {
     }
 
     @PostMapping("/teachers")
-    public String createTeacher(@RequestBody Teacher teacher) {
+    public Teacher createTeacher(@RequestBody Teacher teacher) {
         if(teacher.getName().isEmpty()) {
             throw new RuntimeException("This teacher is not valid");
         }
-        teacherRepo.save(teacher);
-        return "Teacher " + teacher.getName() + " has been created.";
+        return teacherRepo.save(teacher);
     }
 
 }
